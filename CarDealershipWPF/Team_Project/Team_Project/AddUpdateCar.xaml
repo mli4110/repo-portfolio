@@ -1,0 +1,80 @@
+﻿<Window x:Class="Team_Project.AddUpdateCar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Team_Project"
+        mc:Ignorable="d"
+        Title="AddUpdateCar" Height="450" Width="823.75">
+    <Grid>
+        <Grid>
+            <RadioButton Name="rbNewCar" GroupName="rbgCar" Content="New Car" FontWeight="Heavy" HorizontalAlignment="Left" Margin="48,27,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="rbUsedCar" GroupName="rbgCar" Content="Used Car" FontWeight="Heavy" HorizontalAlignment="Left" Margin="159,27,0,0" VerticalAlignment="Top"/>
+            <Button Click="VehicleDlg_btnAddNewCar_Click" Name="VehicleDlg_btnAddNewCar" Content="Add Car" HorizontalAlignment="Left" Margin="704,127,0,0" VerticalAlignment="Top" Width="84" Height="51"/>
+            <Button Name="VehicleDlg_Cancel" IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="704,59,0,0" VerticalAlignment="Top" Width="84" Height="53"/>
+            <Grid Name="gridVehicleCondition">
+                <Label Name="lblMake" Content="Make:" HorizontalAlignment="Left" Margin="32,62,0,0" VerticalAlignment="Top" Width="50"/>
+                <TextBox Name="tbMake" HorizontalAlignment="Left" Height="23" Margin="87,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Model:" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top" Width="50"/>
+                <TextBox Name="tbModel" HorizontalAlignment="Left" Height="23" Margin="87,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Year:" HorizontalAlignment="Left" Margin="32,147,0,0" VerticalAlignment="Top" Width="50"/>
+                <TextBox PreviewTextInput="tbYear_PreviewTextInput" MaxLength="4" Name="tbYear" HorizontalAlignment="Left" Height="23" Margin="87,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Vin" HorizontalAlignment="Left" Margin="32,192,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="tbVin" HorizontalAlignment="Left" Height="23" Margin="87,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Style:" HorizontalAlignment="Left" Margin="228,63,0,0" VerticalAlignment="Top" Width="82"/>
+                <ComboBox Name="combobxStyle" HorizontalAlignment="Left" Margin="320,66,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem>Sedan</ComboBoxItem>
+                    <ComboBoxItem>SUV</ComboBoxItem>
+                    <ComboBoxItem>Minivan</ComboBoxItem>
+                    <ComboBoxItem>Pickup</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Transmission:" HorizontalAlignment="Left" Margin="228,104,0,0" VerticalAlignment="Top" Width="82"/>
+                <ComboBox Name="combobxTransmission" HorizontalAlignment="Left" Margin="320,108,0,0" VerticalAlignment="Top" Width="120" >
+                    <ComboBoxItem>Automatic</ComboBoxItem>
+                    <ComboBoxItem>Manual</ComboBoxItem>
+                    <ComboBoxItem>Tiptronic</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Drivetrain:" HorizontalAlignment="Left" Margin="228,148,0,0" VerticalAlignment="Top" Width="82"/>
+                <ComboBox Name="combobxDriveTrain" HorizontalAlignment="Left" Margin="320,153,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem>All_Wheel</ComboBoxItem>
+                    <ComboBoxItem>Front_Wheel</ComboBoxItem>
+                    <ComboBoxItem>Rear_Wheel</ComboBoxItem>
+                </ComboBox>
+                <TextBox Name="tbColor" HorizontalAlignment="Left" Height="23" Margin="320,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Color" HorizontalAlignment="Left" Margin="228,192,0,0" VerticalAlignment="Top"/>
+                <Label Content="Price:" HorizontalAlignment="Left" Margin="461,66,0,0" VerticalAlignment="Top" Width="71"/>
+                <TextBox Name="tbPrice" HorizontalAlignment="Left" Height="23" Margin="543,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Name="lblOdometer" Content="Odometer:" HorizontalAlignment="Left" Margin="461,104,0,0" VerticalAlignment="Top" Width="71"/>
+                <TextBox Name="VehicleDlg_tbOdometer" HorizontalAlignment="Left" Height="23" Margin="543,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Vehicle ID:" HorizontalAlignment="Left" Margin="461,151,0,0" VerticalAlignment="Top"/>
+                <TextBox IsReadOnly="True" Name="tbVehicleId" HorizontalAlignment="Left" Height="23" Margin="543,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Saleable:" HorizontalAlignment="Left" Margin="461,192,0,0" VerticalAlignment="Top"/>
+                <CheckBox Name="chkbxSaleable" Content="Is Saleable" HorizontalAlignment="Left" Margin="543,198,0,0" VerticalAlignment="Top" Height="23" Width="87"/>
+            </Grid>
+            <Grid Margin="10,238,10,10">
+                <DockPanel Margin="0,36,0,0">
+                    <StatusBar DockPanel.Dock="Bottom">
+                        <StatusBarItem BorderThickness="2" BorderBrush="LightGray">
+                            <TextBlock Name="tbStatusBar" Text="Search result"/>
+                        </StatusBarItem>
+                    </StatusBar>
+                    <ListView Name="lvVehicle" Margin="0,-41,0,0" MouseDoubleClick="lvVehicle_MouseDoubleClick">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="#" Width="50" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Make" Width="120" DisplayMemberBinding="{Binding Make}" />
+                                <GridViewColumn Header="Model" Width="100" DisplayMemberBinding="{Binding Model}" />
+                                <GridViewColumn Header="Year" Width="100" DisplayMemberBinding="{Binding Year}" />
+                                <GridViewColumn Header="Color" Width="120" DisplayMemberBinding="{Binding Color}" />
+                                <GridViewColumn Header="Transmission" Width="100" DisplayMemberBinding="{Binding Transmission}" />
+                                <GridViewColumn Header="Drivetrain" Width="100" DisplayMemberBinding="{Binding Drivetrain}" />
+                                <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Price}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </DockPanel>
+            </Grid>
+            <Button Click="btnClear_Click" Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="704,192,0,0" VerticalAlignment="Top" Width="84" Height="31"/>
+        </Grid>
+    </Grid>
+</Window>

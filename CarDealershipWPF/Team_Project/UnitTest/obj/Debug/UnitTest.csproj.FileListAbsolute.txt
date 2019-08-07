@@ -1,0 +1,14 @@
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\UnitTest.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\UnitTest.pdb
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\obj\Debug\UnitTest.csprojAssemblyReference.cache
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\obj\Debug\UnitTest.dll
+D:\Immigration\Learning\John Abbott\Semester.3\420-PM3-AB .NET PROGRAMMING FUNDAMENTALS\.net_project\Team_Project\UnitTest\obj\Debug\UnitTest.pdb

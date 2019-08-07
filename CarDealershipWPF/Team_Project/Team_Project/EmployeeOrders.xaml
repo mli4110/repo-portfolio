@@ -1,0 +1,55 @@
+﻿<Window x:Class="Team_Project.EmployeeOrders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Team_Project"
+        mc:Ignorable="d"
+        Title="EmployeeOrders" Height="461.842" Width="874">
+    <Grid>
+        <GroupBox Header="Orders" BorderBrush="Gray" BorderThickness="3" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="480">
+            <Grid>
+                <Label Content="Employee Name:" HorizontalAlignment="Left" Margin="26,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Employee ID:" HorizontalAlignment="Left" Margin="26,42,0,0" VerticalAlignment="Top"/>
+                <Label Name="lblEmployeeName" Content="..." HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" Width="194"/>
+                <Label Name="lblEmployeeID" Content="..." HorizontalAlignment="Left" Margin="146,42,0,0" VerticalAlignment="Top" Width="194"/>
+
+            </Grid>
+        </GroupBox>
+        <Grid Margin="10,120,10,60">
+            <DockPanel>
+                <StatusBar DockPanel.Dock="Bottom">
+                    <StatusBarItem BorderThickness="2" BorderBrush="LightGray">
+                        <TextBlock Name="tbStatusBar" Text="Search result"/>
+                    </StatusBarItem>
+                </StatusBar>
+                <ListView Name="lvEmployeeOrders">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="#" Width="60" DisplayMemberBinding="{Binding OrderId}" />
+                            <GridViewColumn Header="Car ID" Width="60" DisplayMemberBinding="{Binding CarId}" />
+                            <GridViewColumn Header="Oder Date" Width="140" DisplayMemberBinding="{Binding OrderDate}" />
+                            <GridViewColumn Header="Pickup Date" Width="140" DisplayMemberBinding="{Binding PickupDate}" />
+                            <GridViewColumn Header="Warranty" Width="100" DisplayMemberBinding="{Binding Warranty}" />
+                            <GridViewColumn Header="Winter Tires" Width="100" DisplayMemberBinding="{Binding WinterTires}" />
+                            <GridViewColumn Header="Rustproofing" Width="100" DisplayMemberBinding="{Binding Rustproofing}" />
+                            <GridViewColumn Header="Total" Width="120" DisplayMemberBinding="{Binding Total}" />
+                            <GridViewColumn Header="Emp. ID" Width="60" DisplayMemberBinding="{Binding EmployeeId}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </DockPanel>
+        </Grid>
+        <GroupBox Header="Sort Orders" BorderBrush="Gray" BorderThickness="3" HorizontalAlignment="Left" Height="100" Margin="500,10,0,0" VerticalAlignment="Top" Width="343">
+            <Grid>
+                <Label Content="Sort by:" HorizontalAlignment="Left" Margin="26,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton Click="rbtnSortByOrderDate_Click" Name="rbtnSortByOrderDate" GroupName="grpSortOrdersBy" Content="Order Date" HorizontalAlignment="Left" Margin="110,16,0,0" VerticalAlignment="Top"/>
+                <RadioButton Click="rbtnSortByPickupDate_Click" Name="rbtnSortByPickupDate" GroupName="grpSortOrdersBy" Content="Pickup Date" HorizontalAlignment="Left" Margin="215,16,0,0" VerticalAlignment="Top"/>
+                <RadioButton Click="rbtnSortByOrderID_Click" Name="rbtnSortByOrderID" GroupName="grpSortOrdersBy" Content="Order ID" HorizontalAlignment="Left" Margin="110,47,0,0" VerticalAlignment="Top" Height="21"/>
+                <RadioButton Click="rbtnSortByTotal_Click" Name="rbtnSortByTotal" GroupName="grpSortOrdersBy" Content="Total" HorizontalAlignment="Left" Margin="215,47,0,0" VerticalAlignment="Top" Height="21"/>
+                <RadioButton Visibility="Hidden" Click="rbtnSortByEmpId_Click" Name="rbtnSortByEmpId" GroupName="grpSortOrdersBy" Content="Emp. ID" HorizontalAlignment="Left" Margin="26,47,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <Button Click="Back_Click" Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" Width="101" Height="25"/>
+    </Grid>
+</Window>
