@@ -1,0 +1,185 @@
+﻿@*@model RealChatByAjax.Models.ChatHistory*@
+@model IEnumerable<RealChatByAjax.Models.ChatHistory>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/MyStyleSheet.css" rel="stylesheet" />
+<div class="col-md-12">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Hello, <span id="sender">@Session["senderIdentity"]</span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-md-5">
+                <label id="chatReminder" style="color:red">Please Select a Receiver</label><br />
+                <label>Selected Receiver: <span id="receiver"></span></label>
+                <select class="form-control" id="receiverList" name="receiver" required>
+                    <option value="">Choose a Receiver</option>
+                    <option id="optionadmin" value="admin">admin</option>
+                    <option id="optionuser1" value="user1">user1</option>
+                    <option id="optionuser2" value="user2">user2</option>
+                    <option id="optionuser3" value="user3">user3</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-5">
+                <textarea class="form-control" id="chatMessage" name="content" maxlength="500" placeholder="Enter Message" required=""></textarea>
+                <br />
+                <div id="counterMessage">The message can cantain 500-character-length.</div>
+            </div>
+
+            <div class="form-group col-md-1">
+                <input class="btn btn-primary" id="sendButton" type="submit" value="Send">
+                <br /><br />
+                @Html.ActionLink("Search", "Search", "ChatHistories", null, new { onclick = "this.href += '?searchString=' + document.getElementById('searchBox').value + '&receiver=' + document.getElementById('receiverList').value;" })
+                <input id="searchBox" type="text" name="search" maxlength="20" />
+            </div>
+        </div>
+    </div><hr />
+
+    <br /><br />
+
+    <table class="table" id="messageList">
+
+        <tbody></tbody>
+
+    </table>
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        // hide sender name in dropdown list
+        var selectedName = document.getElementById("sender").textContent;
+        var selectedOption = "option".concat(selectedName);
+        document.getElementById(selectedOption).style.display = "none";
+        // ----
+
+        // refresh the history table every 5 seconds
+        setInterval(function () {
+            LoadData();
+        }, 5000);
+        // ----
+
+        // Catch the receiver name, and filter the chat messages by selected receiver name
+        var receiverName = "";
+
+        document.getElementById("receiverList").addEventListener("change", function () {
+            receiverName = document.getElementById("receiverList").value;
+            document.getElementById("receiver").innerHTML = receiverName;
+            LoadData();
+            //console.log($("#receiver").text());
+        });
+        // ----
+
+
+        $(document).ready(function () {
+            LoadData();
+            $("#sendButton").click(function () {
+                //alert("");
+                var chat = {};
+                chat.Sender = $("#sender").text();
+                chat.Receiver = $("#receiver").text();
+                chat.Content = $("#chatMessage").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CreateMessage")',
+                    data: '{chatHistory: ' + JSON.stringify(chat) + '}',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function () {
+                       // alert("Data has been added successfully.");
+                        LoadData();
+                        $("#chatMessage").val("");
+                    },
+                    error: function () {
+                        alert("Error while inserting data. Please note the message can not be empty!");
+                    }
+                });
+
+                return false;
+            });
+
+        });
+
+        // load and refresh chat history table
+        function LoadData() {
+
+            if (receiverName == "") {
+                document.getElementById("chatMessage").disabled = true;
+                document.getElementById("sendButton").disabled = true;
+                document.getElementById("messageList").hidden = true;
+                document.getElementById("chatReminder").hidden = false;
+            }
+            else {
+                document.getElementById("chatMessage").disabled = false;
+                document.getElementById("sendButton").disabled = false;
+                document.getElementById("messageList").hidden = false;
+                document.getElementById("chatReminder").hidden = true;
+            }
+            $("#messageList tbody tr").remove();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetMessage")',
+                dataType: 'json',
+                data: { receiver: receiverName },
+                success: function (data) {
+                    //var items = '';
+                    $.each(data, function (index, item) {
+                        var rows;
+                        if (item.Sender == selectedName) {
+                            rows = "<tr>" + "<td class='prtoducttd'>" + "<div class='sentMessage'>" + item.Content + "<br/>" + "From: " + item.Sender + "<br/>" + "Posted on: " + FormatDateString(item.DateTime) + "</div>" + "</td>" + "</tr>";
+                        }
+                        else {
+                            rows = "<tr>" + "<td class='prtoducttd'>" + "<div class='receivedMessage'>" + item.Content + "<br/>" + "From: " + item.Sender + "<br/>" + "Posted on: " + FormatDateString(item.DateTime) + "</div>" + "</td>" + "</tr>";
+                        }
+                        $('#messageList tbody').append(rows);
+                    });
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    alert("Message: " + r.Message);
+                    alert("StackTrace: " + r.StackTrace);
+                    alert("ExceptionType: " + r.ExceptionType);
+                }
+            });
+            return false;
+        }
+        // ----
+
+        // convert Datetime format to string for showing in table
+        function FormatDateString(logDate) {
+            var d = new Date(parseInt(logDate.substr(6)));
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var sec = d.getSeconds();
+
+            return month + "/" + day + "/" + year + " " + hour + ":" + minutes + ":" + sec;
+        }
+        // ----
+
+        // count the number of character in textarea
+        document.getElementById("chatMessage").addEventListener("keyup", function () {
+            var messageLength = $("#chatMessage").val().length;
+            if (messageLength < 499) {
+                document.getElementById("counterMessage").innerHTML = "This message can cantain " + (500 - messageLength) + " more characters.";
+                document.getElementById("counterMessage").style.color = "gray";
+            }
+            else if (messageLength == 499) {
+                document.getElementById("counterMessage").innerHTML = "This message can cantain one more character.";
+                document.getElementById("counterMessage").style.color = "blue";
+            }
+            else {
+                document.getElementById("counterMessage").innerHTML = "Maximum 500 characters per message!";
+                document.getElementById("counterMessage").style.color = "red";
+            }
+        });
+        // ----
+    </script>
+}

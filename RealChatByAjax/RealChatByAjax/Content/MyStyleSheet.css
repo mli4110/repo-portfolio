@@ -1,0 +1,20 @@
+﻿/* Chat message list */
+.sentMessage {
+    float: left;
+    clear: right;
+    background-color: lime;
+    color: Highlight;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.receivedMessage {
+    float: right;
+    clear: left;
+    background-color: cornflowerblue;
+    color: navy;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}

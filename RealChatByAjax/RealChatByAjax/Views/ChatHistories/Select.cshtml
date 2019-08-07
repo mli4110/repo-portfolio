@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Select";
+}
+
+<h2>Select Identity</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <label>Select the sender name:</label>
+
+    @Html.DropDownList("sender", new List<SelectListItem>
+        {
+           new SelectListItem { Text="admin", Value="admin", Selected=true},
+           new SelectListItem { Text="user1", Value="user1"},
+           new SelectListItem { Text="user2", Value="user2"},
+           new SelectListItem { Text="user3", Value="user3"},
+        }, new { @class = "form-control" })
+    <br /><br />
+    <input class="btn btn-primary" type="submit" value="chat now">
+}
