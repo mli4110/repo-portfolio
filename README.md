@@ -2,4 +2,4 @@
 My portfolio
 
 ### RealChatByAjax
-ASP.NET MVC, jQuery, AJAX
+ASP.NET MVC, Entity Framework, jQuery, AJAX
