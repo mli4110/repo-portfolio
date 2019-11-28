@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Instruction</h1>
+    <p class="lead">Hi, welcome to visit this Landing Page Example. You can login by the account (username/password: admin/welcome), as well you can sign up a new user if you want.</p>
+    <p>Some function will be available after login.</p>
+    <p><a href="@Url.Action("Login", "Users")" class="btn btn-primary btn-lg">Login &raquo;</a></p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Task 1: USER ACCOUNT</h4>
+        <ul>
+            <li>"Sign Up" in navigation bar to create a user</li>
+            <li>"Login" in navigation bar to log in</li>
+            <li>Click below button to reset password</li>
+
+        </ul>
+        <p><a id="updateButton" class="btn btn-info" href="@Url.Action("Edit", "Users", new { id=Session["userId"] })">Reset Password &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h4>Task 2: HOME PAGE</h4>
+        <ul>
+            <li>Log-in form</li>
+            <li>Navigation bar</li>
+            <li>Information about Landing Page Example</li>
+            <li>Form for contact via email (implementing...)</li>
+        </ul>
+        <p><a class="btn btn-default" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h4>Task 3: MANAGEMENT</h4>
+        <ul>
+            <li>More function is implementing</li>
+        </ul>
+        <p><a id="managementButton" class="btn btn-success" href="@Url.Action("Index", "Users")">Website Management &raquo;</a></p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+
+
+    </script>
+
+
+
+
+}
