@@ -3,9 +3,10 @@
     "",
     "\\RealChatByAjax",
     "\\RealChatByAjax\\RealChatByAjax",
+    "\\RealChatByAjax\\RealChatByAjax\\Controllers",
     "\\RealChatByAjax\\RealChatByAjax\\Views",
     "\\RealChatByAjax\\RealChatByAjax\\Views\\ChatHistories"
   ],
-  "SelectedNode": "\\RealChatByAjax\\RealChatByAjax\\Views\\ChatHistories\\Create.cshtml",
+  "SelectedNode": "\\RealChatByAjax\\RealChatByAjax\\Controllers\\ChatHistoriesController.cs",
   "PreviewInSolutionExplorer": false
 }
